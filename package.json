@@ -1,0 +1,21 @@
+{
+  "name": "liten",
+  "version": "0.1.0",
+  "description": "Scaffolding for new web design projects.",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ralph van Kruiselbergen",
+  "dependencies": {
+    "bootstrap": "^5.0.0-beta1",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "*",
+    "gulp-concat": "*",
+    "gulp-minify": "*",
+    "gulp-rename": "*",
+    "gulp-sass": "^4.1.0",
+    "gulp-sourcemaps": "*",
+    "merge-stream": "*"
+  }
+}
