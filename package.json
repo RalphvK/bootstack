@@ -8,6 +8,7 @@
   },
   "author": "Ralph van Kruiselbergen",
   "dependencies": {
+    "@popperjs/core": "^2.6.0",
     "bootstrap": "^5.0.0-beta1",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "*",
