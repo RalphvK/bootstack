@@ -1,5 +1,6 @@
 'use strict';
 
+// node modules
 var fs = require('fs');
 var gulp = require('gulp');
 var sass = require('gulp-sass');
@@ -10,22 +11,9 @@ var sourcemaps = require('gulp-sourcemaps');
 var mergeStream = require('merge-stream');
 var autoprefixer = require('gulp-autoprefixer');
 
+// path config
+var pathCfg = require('./gulpcfg');
 var path = {
-    env: 'standard',
-    standard: {
-        scss: './scss/style.scss',
-        css: './public/css',
-        js_src: './',
-        js_src_name: 'scripts', // scripts.js
-        js: './public/js/',
-    },
-    // my_environment: {
-    //     scss: './scss/style.scss',
-    //     css: './../public/css',
-    //     js_src: './',
-    //     js_src_name: 'scripts', // scripts.js
-    //     js: './../public/js/'
-    // },
     get scss() { return this[this.env].scss; },
     get css() { return this[this.env].css; },
     js_src: function (name = null) {
@@ -38,8 +26,10 @@ var path = {
     },
     get js() { return this[this.env].js; }
 };
+// merge path with pathCfg
+Object.assign(path, pathCfg);
 
-// scss
+// scss compile task
 gulp.task('scss', function () {
     return gulp.src(path.scss)
         .pipe(sourcemaps.init())
@@ -58,45 +48,31 @@ gulp.task('scss-minify', function () {
         .pipe(gulp.dest(path.css));
 });
 
-// concat
+// concatenate javascript task
 gulp.task('concat_js', function () {
     // load index.json
     var index = JSON.parse(fs.readFileSync('./js/index.json'));
-    // multi file mode
-    if (!Array.isArray(index.includes)) {
-        var includesMap = new Map(Object.entries(index.includes));
-        console.log('Building ' + includesMap.size + ' variants');
-        var tasks = [];
-        includesMap.forEach(function (fileList, name) {
-            tasks.push(
-                gulp.src(fileList) // file array
-                    .pipe(concat(path.js_src(name)))
-                    .pipe(gulp.dest(path.js))
-                    .pipe(minify({
-                        ext: {
-                            src: '',
-                            min: '.min.js'
-                        },
-                        noSource: true
-                    }))
-                    .pipe(gulp.dest(path.js))
-            );
-        });
-        return mergeStream(...tasks);
-        // single file mode (legacy mode)
-    } else {
-        return gulp.src(index.includes) // file array
-            .pipe(concat(path.js_src()))
-            .pipe(gulp.dest(path.js))
-            .pipe(minify({
-                ext: {
-                    src: '',
-                    min: '.min.js'
-                },
-                noSource: true
-            }))
-            .pipe(gulp.dest(path.js));
-    }
+    var includesMap = new Map(Object.entries(index.includes));
+    console.log('Building ' + includesMap.size + ' separate output files.');
+    // generate tasks for each output file
+    var tasks = [];
+    includesMap.forEach(function (fileList, name) {
+        tasks.push(
+            gulp.src(fileList) // file array
+                .pipe(concat(path.js_src(name)))
+                .pipe(gulp.dest(path.js))
+                .pipe(minify({
+                    ext: {
+                        src: '',
+                        min: '.min.js'
+                    },
+                    noSource: true
+                }))
+                .pipe(gulp.dest(path.js))
+        );
+    });
+    // return tasks
+    return mergeStream(...tasks);
 });
 
 // watch
@@ -106,4 +82,5 @@ gulp.task('watch', function () {
     gulp.watch('./scss/**/*.scss', gulp.series('scss', 'scss-minify'));
 });
 
+// standard task for gulp
 gulp.task('default', gulp.series('watch', 'concat_js', 'scss', 'scss-minify'));
