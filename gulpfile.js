@@ -14,18 +14,18 @@ var path = {
     env: 'standard',
     standard: {
         scss: './scss/style.scss',
-        css: './css',
+        css: './public/css',
         js_src: './',
         js_src_name: 'scripts', // scripts.js
-        js: './js/',
+        js: './public/js/',
     },
-    viggen: {
-        scss: './scss/style.scss',
-        css: './../public/css',
-        js_src: './',
-        js_src_name: 'scripts', // scripts.js
-        js: './../public/js/'
-    },
+    // my_environment: {
+    //     scss: './scss/style.scss',
+    //     css: './../public/css',
+    //     js_src: './',
+    //     js_src_name: 'scripts', // scripts.js
+    //     js: './../public/js/'
+    // },
     get scss() { return this[this.env].scss; },
     get css() { return this[this.env].css; },
     js_src: function (name = null) {
