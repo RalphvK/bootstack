@@ -99,7 +99,7 @@ Included in the project are a few snippets for VS Code. My aim is to expand this
 
 ### CSS/SCSS
 
-```cfg``` - The $cgf map short-cut snippet is included for quickly referencing the standard $cfg file-specific config map in scss. The $cfg map is my own personal convention, and not a globally accepted practice. It outputs the following line:
+```cfg``` - The $cgf map short-cut snippet is included for quickly referencing the $cfg file-specific config map in scss. The $cfg map is my own personal convention, and not a globally accepted practice. It outputs the following line:
 
 ```scss
 map-get($cfg, 'your-property')
