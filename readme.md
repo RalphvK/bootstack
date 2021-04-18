@@ -92,3 +92,30 @@ The SCSS structure is loaded in sequence as follows:
 3. **components** - Components are SCSS files that can be easily reused among multiple BootStack projects. - *Components should be easily reusable to allow for increasingly fast development as the library of already developed components grows. This way, I hope to avoid having to reinvent the wheel for each project.*
 
 4. **partials** - Partials are the non-reusable styles for a project. - *These are all styles that cannot be easily reused and are specific to this project.*
+
+# Snippets
+
+Included in the project are a few snippets for VS Code. My aim is to expand this collection further in the future.
+
+### CSS/SCSS
+
+```cfg``` - The $cgf map short-cut snippet is included for quickly referencing the standard $cfg file-specific config map in scss. The $cfg map is my own personal convention, and not a globally accepted practice. It outputs the following line:
+
+```scss
+map-get($cfg, 'your-property')
+```
+
+```map-get``` - Alternative for the default map-get snippet. The default snippet uses named arguments, whereas this alternative uses anonymous arguments. Most of the time, named arguments are preferred, but in the case of map-get it is often desirable to reduce visual clutter, while map-get only has two arguments of which it is immediately clear what their respective purpose is.
+
+```scss
+map-get($yourmap, 'your-property')
+```
+
+```top:left:bottom:left:``` - Since there is no short-hand for absolute positioning, this snippet is included to easily add all sides. It outputs:
+
+```scss
+top: 0;
+right: 0;
+bottom: 0;
+left: 0;
+```
