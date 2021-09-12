@@ -4,6 +4,7 @@
   "description": "Scaffolding for new web design projects.",
   "main": "index.html",
   "scripts": {
+    "gulp": "gulp",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Ralph van Kruiselbergen",
