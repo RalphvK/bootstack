@@ -1,6 +1,8 @@
 # About BootStack
 
-This project is a reboot of my old [RalphvK/bootsass](https://github.com/RalphvK/bootsass). The primary purpose of BootStack is to build a good project structure around the Bootstrap 5 SCSS, to be used as a starting point when building a simple static website with styling, markup and javascript. Additionally, I would like to add a PHP component to this "scaffolding" as well, probably using the Klein.php router, in order to allow for the development of simple applications using BootStack. Ultimately, the aim of this project is therefore to build a complete stack centered around Bootstrap 5.
+This project is a reboot of my old [RalphvK/bootsass](https://github.com/RalphvK/bootsass). The primary purpose of BootStack is to build a good project structure around the Bootstrap 5 SCSS, to be used as a starting point when building a simple static website with styling, markup and javascript.
+
+In the future, BootStack might include a PHP component as part of this "scaffolding" as well, possibly using the Klein.php router, in order to allow for the development of simple applications using BootStack. Ultimately, the aim of this project is therefore to build a complete stack centered around Bootstrap 5.
 
 # Installation instructions
 
