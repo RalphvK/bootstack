@@ -1,2 +1,8 @@
 node_modules
 .sass-cache
+.env.php
+.env.*.php
+!.env.example.php
+.env
+keys.data.php
+/backend/vendor
