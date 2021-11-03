@@ -3,6 +3,7 @@
 
 // import custom config & overrides
 @import "variables";
+@import "variables-refresh"; // redefine $theme-colors map
 
 // import Bootstrap's optional files
 @import "bootstrap-components";
