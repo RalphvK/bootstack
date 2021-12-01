@@ -1,0 +1,41 @@
+$util-transform-scale-variants: (
+    '0-1': 0.1,
+    '0-2': 0.2,
+    '0-3': 0.3,
+    '0-4': 0.4,
+    '0-5': 0.5,
+    '0-6': 0.6,
+    '0-7': 0.7,
+    '0-8': 0.8,
+    '0-9': 0.9,
+    '1': 1,
+    '1-1': 1.1,
+    '1-2': 1.2,
+    '1-3': 1.3,
+    '1-4': 1.4,
+    '1-5': 1.5,
+    '1-6': 1.6,
+    '1-7': 1.7,
+    '1-8': 1.8,
+    '1-9': 1.9,
+    '2': 2
+);
+
+@each $size, $value in $util-transform-scale-variants {
+    // on element itself
+    .tf-scale-#{$size} {
+        transform: scale($value);
+    }
+    // on :before pseudo-element
+    .tf-before-scale-#{$size} {
+        &::before{
+            transform: scale($value);
+        }
+    }
+    // on :after pseudo-element
+    .tf-after-scale-#{$size} {
+        &::after{
+            transform: scale($value);
+        }
+    }
+}

@@ -1,0 +1,18 @@
+$display-property-values: (
+    'none': none,
+    'inline': inline,
+    'inline-block': inline-block,
+    'block': block,
+    'flex': flex,
+    'grid': grid
+);
+
+@each $name, $val in $display-property-values {
+    .d-#{$name}-soft {
+        display: $val;
+    }
+}
+
+.flex-unset {
+    flex: unset;
+}
