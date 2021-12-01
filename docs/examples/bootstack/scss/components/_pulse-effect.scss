@@ -1,0 +1,33 @@
+.pulse-effect {
+    overflow: visible;
+    position: relative;
+    z-index: 1;
+}
+.pulse-effect:before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: inherit;
+    border-radius: inherit;
+    transition: opacity 0.3s, transform 0.3s;
+    animation: pulse-animation 2s cubic-bezier(0.1, 0, 0.38, 1) infinite;
+    z-index: -1;
+}
+@keyframes pulse-animation {
+    0% {
+        opacity: 1;
+        transform: scaleX(1) scaleY(1);
+    }
+    50% {
+        opacity: 0;
+        transform: scaleX(1.1) scaleY(1.4);
+    }
+    100% {
+        opacity: 0;
+        transform: scaleX(1.1) scaleY(1.4);
+    }
+}

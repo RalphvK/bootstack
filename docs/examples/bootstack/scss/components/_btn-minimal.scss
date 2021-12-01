@@ -1,0 +1,111 @@
+// minimal button style
+// comes in two variants: .btn-minimal-[color] and .btn-minimal-filled-[color]
+// the first variant has no background in the normal state, the second variant has an opaque background in the normal state
+
+// mixin for custom variants
+@mixin button-outline-custom-variant(
+    $color,
+    $color-hover: color-contrast($color),
+    $active-background: $color,
+    $active-border: $color,
+    $active-color: color-contrast($active-background),
+    $inactive-background: transparent
+) {
+    color: $color;
+    border-color: $color;
+    background-color: $inactive-background;
+
+    &:hover {
+        color: $color-hover;
+        background-color: $active-background;
+        border-color: $active-border;
+    }
+
+    .btn-check:focus + &,
+    &:focus {
+        box-shadow: 0 0 0 $btn-focus-width rgba($color, 0.5);
+    }
+
+    .btn-check:checked + &,
+    .btn-check:active + &,
+    &:active,
+    &.active,
+    &.dropdown-toggle.show {
+        color: $active-color;
+        background-color: $active-background;
+        border-color: $active-border;
+
+        &:focus {
+            @if $enable-shadows {
+                @include box-shadow($btn-active-box-shadow, 0 0 0 $btn-focus-width rgba($color, 0.5));
+            } @else {
+                // Avoid using mixin so we can pass custom focus shadow properly
+                box-shadow: 0 0 0 $btn-focus-width rgba($color, 0.5);
+            }
+        }
+    }
+
+    &:disabled,
+    &.disabled {
+        color: $color;
+        background-color: transparent;
+    }
+}
+
+// btn-minimal styles for each theme color
+@each $color, $value in $theme-colors {
+
+    // btn-minimal
+    .btn-minimal-#{$color} {
+        @include button-outline-custom-variant(
+            $color: $value,
+            $color-hover: $value,
+            $active-color: $value,
+            $active-background: rgba($value, 0.1)
+        );
+        border: none;
+        display: inline-block;
+        padding: 0.5rem 0.8rem;
+        @include setting-uppercase;
+        font-weight: 600;
+        font-size: 0.8em;
+        letter-spacing: 0.6px;
+        text-decoration: none;
+        &:hover {
+            color: $value;
+        }
+        &:disabled,
+        &.disabled {
+            color: lighten(desaturate($value, 30%), 20%);
+            background-color: transparent;
+        }
+    }
+
+    // btn-minimal-filled
+    .btn-minimal-filled-#{$color} {
+        @include button-outline-custom-variant(
+            $color: $value,
+            $color-hover: darken($value, 30%),
+            $active-color: darken($value, 30%),
+            $active-background: rgba($value, 0.25),
+            $inactive-background: rgba($value, 0.1)
+        );
+        border: none;
+        display: inline-block;
+        padding: 0.5rem 0.8rem;
+        @include setting-uppercase;
+        font-weight: 600;
+        font-size: 0.8em;
+        letter-spacing: 0.6px;
+        text-decoration: none;
+        &:hover {
+            color: $value;
+        }
+        &:disabled,
+        &.disabled {
+            color: lighten(desaturate($value, 30%), 20%);
+            background-color: transparent;
+        }
+    }
+
+}

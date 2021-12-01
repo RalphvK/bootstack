@@ -1,0 +1,59 @@
+// shortcut classes for toast-containers
+.toast-container-absolute {
+    @extend .toast-container;
+    @extend .position-absolute;
+    z-index: 9999;
+}
+
+.toast-container-top-left {
+    @extend .toast-container-absolute;
+    @extend .top-0;
+    @extend .start-0;
+}
+.toast-container-top-center {
+    @extend .toast-container-absolute;
+    @extend .top-0;
+    @extend .start-50;
+    @extend .translate-middle-x;
+}
+.toast-container-top-right {
+    @extend .toast-container-absolute;
+    @extend .top-0;
+    @extend .end-0;
+}
+
+.toast-container-middle-left {
+    @extend .toast-container-absolute;
+    @extend .top-50;
+    @extend .start-0;
+    @extend .translate-middle-y;
+}
+.toast-container-middle-center {
+    @extend .toast-container-absolute;
+    @extend .top-50;
+    @extend .start-50;
+    @extend .translate-middle-y;
+}
+.toast-container-middle-right {
+    @extend .toast-container-absolute;
+    @extend .top-50;
+    @extend .end-0;
+    @extend .translate-middle-y;
+}
+
+.toast-container-bottom-left {
+    @extend .toast-container-absolute;
+    @extend .bottom-0;
+    @extend .start-0;
+}
+.toast-container-bottom-center {
+    @extend .toast-container-absolute;
+    @extend .bottom-0;
+    @extend .start-50;
+    @extend .translate-middle-x;
+}
+.toast-container-bottom-right {
+    @extend .toast-container-absolute;
+    @extend .bottom-0;
+    @extend .end-0;
+}
