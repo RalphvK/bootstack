@@ -1,9 +1,12 @@
+// set variables before init
+@import "bootstrap-variables-before";
+
 // import Bootstrap's required files
 @import "bootstrap-required";
 
 // import custom config & overrides
-@import "variables";
-@import "variables-refresh"; // redefine $theme-colors map
+@import "bootstrap-variables-after";
+@import "map-refresh"; // redefine $theme-colors map
 
 // import Bootstrap's optional files
 @import "bootstrap-components";
